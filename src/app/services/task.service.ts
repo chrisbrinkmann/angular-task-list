@@ -24,6 +24,12 @@ export class TaskService {
     return this.http.get<Task[]>(`${this.tasksUrl}${this.tasksLimit}`)
   }
 
+  // Delete task
+  deleteTask(task: Task): Observable<Task> {
+    const url = `${this.tasksUrl}/${task.id}`
+    return this.http.delete<Task>(url, httpOptions)
+  }
+
   // Toggle Completed
   toggleCompleted(task: Task): Observable<any>{
     const url = `${this.tasksUrl}/${task.id}`

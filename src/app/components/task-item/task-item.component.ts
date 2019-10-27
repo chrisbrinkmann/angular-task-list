@@ -30,9 +30,7 @@ export class TaskItemComponent implements OnInit {
     task.completed = !task.completed
 
     // Toggle on server
-    this.taskService.toggleCompleted(task).subscribe(task => {
-      console.log(task)
-    })
+    this.taskService.toggleCompleted(task).subscribe()
   }
 
   onDelete(task) {
