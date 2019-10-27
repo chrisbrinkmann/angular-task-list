@@ -14,4 +14,13 @@ export class TaskItemComponent implements OnInit {
   ngOnInit() {
   }
 
+  // Set Dynamic Classes
+  setClasses() {
+    let classes = {
+      task: true,
+      'is-completed': this.task.completed
+    }
+    return classes
+  }
+
 }
