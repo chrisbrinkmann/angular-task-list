@@ -19,6 +19,11 @@ export class TaskService {
 
   constructor(private http: HttpClient) {}
 
+  // Add task
+  addTask(task: Task): Observable<Task> {
+    return this.http.post<Task>(this.tasksUrl, task, httpOptions)
+  }
+
   // Get tasks
   getTasks(): Observable<Task[]> {
     return this.http.get<Task[]>(`${this.tasksUrl}${this.tasksLimit}`)
