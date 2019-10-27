@@ -15,7 +15,7 @@ const httpOptions = {
 })
 export class TaskService {
   tasksUrl: string = 'https://jsonplaceholder.typicode.com/todos'
-  tasksLimit: string = '?_limit=5'
+  tasksLimit: string = '?_limit=3'
 
   constructor(private http: HttpClient) {}
 
