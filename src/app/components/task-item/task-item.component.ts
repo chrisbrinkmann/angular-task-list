@@ -18,9 +18,18 @@ export class TaskItemComponent implements OnInit {
   setClasses() {
     let classes = {
       task: true,
-      'is-completed': this.task.completed
+      'is-complete': this.task.completed
     }
     return classes
+  }
+
+  // methods
+  onToggle(task) {
+    console.log('toggle')
+  }
+
+  onDelete(task) {
+    console.log('delete')
   }
 
 }
