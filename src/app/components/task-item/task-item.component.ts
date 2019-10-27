@@ -25,7 +25,7 @@ export class TaskItemComponent implements OnInit {
 
   // methods
   onToggle(task) {
-    console.log('toggle')
+    task.completed = !task.completed
   }
 
   onDelete(task) {

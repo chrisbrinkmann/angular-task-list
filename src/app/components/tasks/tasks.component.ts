@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../../models/Task'
+import { TaskService } from '../../services/task.service'
 
 @Component({
   selector: 'app-tasks',
@@ -9,26 +10,10 @@ import { Task } from '../../models/Task'
 export class TasksComponent implements OnInit {
   tasks:Task[]
 
-  constructor() { }
+  constructor(private taskService:TaskService) { }
 
   ngOnInit() {
-    this.tasks = [
-      {
-        id: 1,
-        title: 'First task',
-        completed: false
-      },
-      {
-        id: 2,
-        title: 'Second task',
-        completed: true
-      },
-      {
-        id: 3,
-        title: 'Third task',
-        completed: false
-      }
-    ]
+    this.tasks = this.taskService.getTasks()
   }
 
 }
