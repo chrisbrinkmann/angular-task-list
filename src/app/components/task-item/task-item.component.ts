@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core'
 import { Task } from '../../models/Task'
+import { TaskService } from '../../services/task.service'
 
 @Component({
   selector: 'app-task-item',
@@ -9,10 +10,9 @@ import { Task } from '../../models/Task'
 export class TaskItemComponent implements OnInit {
   @Input() task: Task
 
-  constructor() { }
+  constructor(private taskService:TaskService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   // Set Dynamic Classes
   setClasses() {
@@ -25,11 +25,16 @@ export class TaskItemComponent implements OnInit {
 
   // methods
   onToggle(task) {
+    // Toggle in UI
     task.completed = !task.completed
+
+    // Toggle on server
+    this.taskService.toggleCompleted(task).subscribe(task => {
+      console.log(task)
+    })
   }
 
   onDelete(task) {
     console.log('delete')
   }
-
 }

@@ -4,16 +4,29 @@ import { HttpClient, HttpHeaders } from '@angular/common/http'
 
 import { Task } from '../models/Task'
 
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json'
+  })
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
-  tasksUrl:string = 'https://jsonplaceholder.typicode.com/todos'
-  tasksLimit:string = '?_limit=5'
+  tasksUrl: string = 'https://jsonplaceholder.typicode.com/todos'
+  tasksLimit: string = '?_limit=5'
 
   constructor(private http: HttpClient) {}
 
-  getTasks():Observable<Task[]> {
+  // Get tasks
+  getTasks(): Observable<Task[]> {
     return this.http.get<Task[]>(`${this.tasksUrl}${this.tasksLimit}`)
+  }
+
+  // Toggle Completed
+  toggleCompleted(task: Task): Observable<any>{
+    const url = `${this.tasksUrl}/${task.id}`
+    return this.http.put(url, task, httpOptions)
   }
 }
