@@ -2,4 +2,4 @@
 `$ng serve --open`
 
 ### Create new component
-`$ng generate component <path relative to src/app>`
+`$ng g c <path relative to src/app>`
