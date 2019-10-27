@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core'
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core'
 import { Task } from '../../models/Task'
 import { TaskService } from '../../services/task.service'
 
@@ -9,6 +9,7 @@ import { TaskService } from '../../services/task.service'
 })
 export class TaskItemComponent implements OnInit {
   @Input() task: Task
+  @Output() deleteTask: EventEmitter<Task> = new EventEmitter()
 
   constructor(private taskService:TaskService) {}
 
@@ -35,6 +36,6 @@ export class TaskItemComponent implements OnInit {
   }
 
   onDelete(task) {
-    console.log('delete')
+    this.deleteTask.emit(task)
   }
 }
